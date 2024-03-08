@@ -9,11 +9,8 @@ namespace ECommerceDB.Seeders
 {
     public static class ProductCategorySeeder
     {
-        public static void Seed(IServiceProvider serviceProvider)
+        public static void Seed(ECommerceDbContext context)
         {
-            using var context = new ECommerceDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<ECommerceDbContext>>());
-
             try
             {
                 context.Database.BeginTransaction();

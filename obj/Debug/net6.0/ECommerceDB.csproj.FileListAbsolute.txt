@@ -53,3 +53,9 @@ Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\Microsoft.AspNetCore.Json
 Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\Newtonsoft.Json.dll
 Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\ECommerceDB.MvcApplicationPartsAssemblyInfo.cs
+Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\ECommerceDB.MvcApplicationPartsAssemblyInfo.cache
+Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\staticwebassets.build.json
+Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\staticwebassets.development.json
+Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\scopedcss\bundle\ECommerceDB.styles.css
+Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\appsettings.json

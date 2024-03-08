@@ -1,34 +1,42 @@
-﻿using System;
-using System.Linq;
-using ECommerceDB.Models;
-using ECommerceDB.Seeders;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ECommerceDB.Models;
+using ECommerceDB.Seeders;
 
 namespace ECommerceDB
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var services = new ServiceCollection();
+            var host = CreateHostBuilder(args).Build();
 
-            services.AddDbContext<ECommerceDbContext>(options =>
-                options.UseSqlServer("server=localhost;database=ecomerce;user=sa;password=SuksesBersama((99!!!))")); 
-                
-            var serviceProvider = services.BuildServiceProvider();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
-            ProductCategorySeeder.Seed(serviceProvider);
-            
-            var builder = CreateHostBuilder(args);
+                try
+                {
+                    var context = services.GetRequiredService<ECommerceDbContext>();
+                    context.Database.EnsureCreated(); // Pastikan basis data sudah dibuat
+                    ProductCategorySeeder.Seed(context); // Jalankan seeder untuk data awal
+                }
+                catch (Exception ex)
+                {
+                    // Handle error jika terjadi
+                    Console.WriteLine(ex.Message);
+                }
+            }
 
-            var app = builder.Build();
-
-            app.Run();
+            host.Run();
         }
 
-        static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args);
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>(); // Gunakan Startup class untuk konfigurasi aplikasi web
+                });
     }
 }
