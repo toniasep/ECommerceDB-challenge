@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ECommerceDB.Models;
 using ECommerceDB.Models.Services;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json.Serialization;
 
 namespace ECommerceDB
 {
@@ -25,6 +27,12 @@ namespace ECommerceDB
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ProductService>();
+
+            services.AddMvc()
+            .AddNewtonsoftJson(x =>
+                {
+                    x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

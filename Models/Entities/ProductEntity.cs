@@ -23,5 +23,8 @@ namespace ECommerceDB.Models.Entities
         [Column(name: "inventory_quantity")]
         public int InventoryQuantity { get; set; }
 
+        public ICollection<ProductCategoryEntity> ProductCategories { get; set; }
+
+
     }
 }

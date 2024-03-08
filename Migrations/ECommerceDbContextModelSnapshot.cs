@@ -41,7 +41,7 @@ namespace ECommerceDB.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceDB.Models.Entities.ProductCategoryEntity", b =>
@@ -58,7 +58,7 @@ namespace ECommerceDB.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("products_categories");
+                    b.ToTable("products_categories", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceDB.Models.Entities.ProductEntity", b =>
@@ -86,7 +86,7 @@ namespace ECommerceDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("products");
+                    b.ToTable("products", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceDB.Models.Entities.CategoryEntity", b =>

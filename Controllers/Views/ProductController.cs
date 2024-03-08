@@ -1,3 +1,4 @@
+using ECommerceDB.Controllers.Requests;
 using ECommerceDB.Models.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +15,9 @@ namespace ECommerceDB.Controllers.Views
         }
 
         [HttpGet("/product")]
-        public IActionResult IndexProduct()
+        public IActionResult IndexProduct([FromQuery] ProductListRequest request)
         {
-            return Ok(_productService.GetAllProducts());
+            return Ok(_productService.GetAllProducts(request));
         }
     }
 }
