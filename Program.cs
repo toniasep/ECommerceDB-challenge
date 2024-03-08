@@ -20,7 +20,10 @@ namespace ECommerceDB
                 {
                     var context = services.GetRequiredService<ECommerceDbContext>();
                     context.Database.EnsureCreated(); // Pastikan basis data sudah dibuat
+                    
+                    //seeder
                     ProductCategorySeeder.Seed(context); // Jalankan seeder untuk data awal
+                    CustomerOrderSeeder.Seed(context);
                 }
                 catch (Exception ex)
                 {

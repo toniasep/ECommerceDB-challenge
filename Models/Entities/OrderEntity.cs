@@ -28,6 +28,8 @@ namespace ECommerceDB.Models.Entities
         
         [Column(name: "status")]
         public string Status { get; set; }
+
+        public ICollection<OrderItemEntity> OrderItems { get; set; }
         
     }
 }
