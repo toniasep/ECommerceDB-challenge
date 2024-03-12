@@ -37,5 +37,20 @@ namespace ECommerceDB.Models.Services
                 })
                 .ToList();
         }
+
+        public List<BestSellerListResponse> GetBestSellers()
+        {
+            var data = _context.Products
+                .Include(p => p.OrderItems)
+                .Select(p => new BestSellerListResponse
+                {
+                    Name = p.Name,
+                    Sold = p.OrderItems.Sum(oi => oi.Quantity)
+                })
+                .OrderByDescending(x => x.Sold)
+                .ToList();
+            
+            return data;
+        }
     }
 }

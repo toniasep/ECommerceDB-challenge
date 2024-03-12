@@ -19,5 +19,11 @@ namespace ECommerceDB.Controllers.Views
         {
             return Ok(_productService.GetAllProducts(request));
         }
+
+        [HttpGet("/product/best-sellers")]
+        public IActionResult BestSellers()
+        {
+            return Ok(_productService.GetBestSellers());
+        }
     }
 }

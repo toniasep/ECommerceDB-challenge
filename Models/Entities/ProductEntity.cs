@@ -25,6 +25,8 @@ namespace ECommerceDB.Models.Entities
 
         public ICollection<ProductCategoryEntity> ProductCategories { get; set; }
 
+        public ICollection<OrderItemEntity> OrderItems { get; set; }
+
 
     }
 }

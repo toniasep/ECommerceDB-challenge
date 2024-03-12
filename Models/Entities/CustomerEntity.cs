@@ -28,6 +28,8 @@ namespace ECommerceDB.Models.Entities
         
         [Column(name: "preferences")]
         public string Preferences { get; set; }
+
+        public ICollection<OrderEntity> Orders { get; set; }
         
     }
 }

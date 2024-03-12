@@ -27,6 +27,7 @@ namespace ECommerceDB
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ProductService>();
+            services.AddScoped<OrderService>();
 
             services.AddMvc()
             .AddNewtonsoftJson(x =>
