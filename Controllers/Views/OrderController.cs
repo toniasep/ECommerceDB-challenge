@@ -17,7 +17,7 @@ namespace ECommerceDB.Controllers.Views
         [HttpGet("/orders/income")]
         public IActionResult IndexOrder()
         {
-            return Ok(_orderService.Index());
+            return Ok(_orderService.GetIncome());
         }
     }
 }

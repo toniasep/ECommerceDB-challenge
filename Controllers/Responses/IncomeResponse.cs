@@ -4,12 +4,6 @@ namespace ECommerceDB.Controllers.Responses
     {
         public decimal TotalIncome { get; set; }
         public int TotalSold { get; set; }
-        public List<ProductSoldResponse> ProductSolds { get; set; }
-    }
-
-    public class ProductSoldResponse
-    {
-        public string Product { get; set; }
-        public int Quantity { get; set; }
+        public List<OrderListResponse> Orders { get; set; }
     }
 }

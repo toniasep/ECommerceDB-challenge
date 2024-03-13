@@ -6,9 +6,9 @@ namespace ECommerceDB.Controllers.Views
 {
     public class CustomerController : Controller
     {
-        private readonly OrderService _customerService;
+        private readonly CustomerService _customerService;
         public CustomerController(
-            OrderService customerService
+            CustomerService customerService
         )
         {
             _customerService = customerService;

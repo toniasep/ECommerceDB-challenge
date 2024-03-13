@@ -14,9 +14,37 @@ namespace ECommerceDB.Models.Services
             _context = context;
         }
 
-        // public IncomeResponse GetIncome()
-        // {
-        //     var data = 
-        // }
+        public IncomeResponse GetIncome()
+        {
+            var data = _context.Orders
+                .Include(o => o.OrderItems)
+                    .ThenInclude(oi => oi.Product)
+                .ToList();
+            
+            var response = new IncomeResponse
+            {
+                Orders = data.Select(x => new OrderListResponse
+                {
+                    Id = x.Id,
+                    OrderDate = x.OrderDate,
+                    ShippingAddress = x.ShippingAddress,
+                    PaymentMethod = x.PaymentMethod,
+                    Status = x.Status,
+                    OrderItems = x.OrderItems.Select(oi => new OrderItemResponse
+                    {
+                        Id = oi.Id,
+                        Quantity = oi.Quantity,
+                        Product = oi.Product.Name,
+                        Price = oi.Product.Price
+                    }).ToList()
+                }).ToList(),
+                TotalIncome = data.Sum(x => x.OrderItems.Sum(oi => oi.Quantity * oi.Product.Price)),
+                TotalSold = data.Sum(x => x.OrderItems.Sum(oi => oi.Quantity))
+            };
+
+            return response;
+
+
+        }
     }
 }

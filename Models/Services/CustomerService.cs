@@ -38,7 +38,8 @@ namespace ECommerceDB.Models.Services
                     {
                         Id = oi.Id,
                         Quantity = oi.Quantity,
-                        Product = oi.Product.Name
+                        Product = oi.Product.Name,
+                        Price = oi.Product.Price
                     }).ToList()
                 }).ToList()
             }).ToList();

@@ -28,6 +28,7 @@ namespace ECommerceDB
 
             services.AddScoped<ProductService>();
             services.AddScoped<OrderService>();
+            services.AddScoped<CustomerService>();
 
             services.AddMvc()
             .AddNewtonsoftJson(x =>
