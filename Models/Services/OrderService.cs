@@ -14,12 +14,17 @@ namespace ECommerceDB.Models.Services
             _context = context;
         }
 
-        public IncomeResponse GetIncome()
+        public IncomeResponse GetIncome(OrderListRequest request)
         {
             var data = _context.Orders
                 .Include(o => o.OrderItems)
                     .ThenInclude(oi => oi.Product)
                 .ToList();
+
+            if (request.StartDate != null && request.EndDate != null)
+            {
+                data = data.Where(x => x.OrderDate >= request.StartDate && x.OrderDate <= request.EndDate).ToList();
+            }
             
             var response = new IncomeResponse
             {

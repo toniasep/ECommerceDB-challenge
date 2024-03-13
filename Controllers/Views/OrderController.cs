@@ -15,9 +15,9 @@ namespace ECommerceDB.Controllers.Views
         }
 
         [HttpGet("/orders/income")]
-        public IActionResult IndexOrder()
+        public IActionResult IndexOrder([FromQuery] OrderListRequest request)
         {
-            return Ok(_orderService.GetIncome());
+            return Ok(_orderService.GetIncome(request));
         }
     }
 }

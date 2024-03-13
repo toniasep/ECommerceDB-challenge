@@ -44,7 +44,7 @@ namespace ECommerceDB.Seeders
                         var order = new OrderEntity
                         {
                             CustomerId = customer.Id,
-                            OrderDate = DateTime.Now,
+                            OrderDate = DateTime.Now.AddDays(-random.Next(1, 365)),
                             ShippingAddress = customer.ShippingAddress,
                             PaymentMethod = payment_methods[random.Next(payment_methods.Count)],
                             Status = status[random.Next(status.Count)]
