@@ -1,6 +1,7 @@
 using ECommerceDB.Controllers.Requests;
 using ECommerceDB.Controllers.Responses;
 using ECommerceDB.Models.Entities;
+using ECommerceDB.Models.Paginations;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceDB.Models.Services
@@ -14,11 +15,11 @@ namespace ECommerceDB.Models.Services
             _context = context;
         }
 
-        public List<ProductListResponse> GetAllProducts(ProductListRequest request)
+        public PagedList<ProductEntity> GetAllProducts(ProductListRequest request)
         {
             var query = _context.Products
                         .Include(x => x.ProductCategories)
-                        .ThenInclude(x => x.Category)
+                            .ThenInclude(x => x.Category)
                         .AsQueryable();
 
             if (!string.IsNullOrEmpty(request.Category))
@@ -27,16 +28,10 @@ namespace ECommerceDB.Models.Services
                     .Where(x => x.ProductCategories.Any(pc => pc.Category.Name == request.Category));
             }
 
-            return query
-                .Select(x => new ProductListResponse
-                {
-                    Name = x.Name,
-                    Price = x.Price,
-                    InventoryQuantity = x.InventoryQuantity,
-                    Categories = x.ProductCategories.Select(pc => pc.Category.Name).ToList()
-                })
-                .ToList();
+            return new PagedList<ProductEntity>(query.AsQueryable(), request.PageNumber, request.PageSize);
         }
+
+
 
         public List<BestSellerListResponse> GetBestSellers()
         {

@@ -59,3 +59,4 @@ Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\staticwebassets.build.jso
 Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\staticwebassets.development.json
 Z:\DOT\challenge-db-query\ECommerceDB\obj\Debug\net6.0\scopedcss\bundle\ECommerceDB.styles.css
 Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\appsettings.json
+Z:\DOT\challenge-db-query\ECommerceDB\bin\Debug\net6.0\AutoMapper.dll

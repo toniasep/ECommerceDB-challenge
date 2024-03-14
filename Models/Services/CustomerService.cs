@@ -20,7 +20,7 @@ namespace ECommerceDB.Models.Services
                 .Include(x => x.Orders)
                     .ThenInclude(x => x.OrderItems)
                         .ThenInclude(x => x.Product)
-                .ToList();
+                .AsQueryable();
             
             return data.Select(x => new CustomerListResponse
             {
@@ -40,7 +40,7 @@ namespace ECommerceDB.Models.Services
                         Quantity = oi.Quantity,
                         Product = oi.Product.Name,
                         Price = oi.Product.Price
-                    }).ToList()
+                    }).Take(1).ToList()
                 }).ToList()
             }).ToList();
         }

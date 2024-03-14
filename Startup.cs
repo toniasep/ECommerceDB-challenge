@@ -8,6 +8,7 @@ using ECommerceDB.Models;
 using ECommerceDB.Models.Services;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json.Serialization;
+using ECommerceDB.Models.Paginations;
 
 namespace ECommerceDB
 {
@@ -29,6 +30,7 @@ namespace ECommerceDB
             services.AddScoped<ProductService>();
             services.AddScoped<OrderService>();
             services.AddScoped<CustomerService>();
+            services.AddScoped<Pagination>();
 
             services.AddMvc()
             .AddNewtonsoftJson(x =>
