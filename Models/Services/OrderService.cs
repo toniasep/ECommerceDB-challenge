@@ -25,6 +25,16 @@ namespace ECommerceDB.Models.Services
             {
                 data = data.Where(x => x.OrderDate >= request.StartDate && x.OrderDate <= request.EndDate).ToList();
             }
+
+            if (request.StartDate != null)
+            {
+                data = data.Where(x => x.OrderDate >= request.StartDate).ToList();
+            }
+
+            if (request.EndDate != null)
+            {
+                data = data.Where(x => x.OrderDate <= request.EndDate).ToList();
+            }
             
             var response = new IncomeResponse
             {
