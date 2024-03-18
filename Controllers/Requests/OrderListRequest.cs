@@ -10,5 +10,8 @@ namespace ECommerceDB.Controllers.Requests
 
         [FromQuery(Name = "end_date")]
         public DateTime? EndDate { get; set; }
+
+        [FromQuery(Name = "without_order_data")]
+        public bool WithoutOrderData { get; set; }
     }
 }
